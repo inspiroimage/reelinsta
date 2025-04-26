@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>INSPIRO Reels - Download Instagram Videos</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      background: #f5f5f5;
+    }
+    .logo {
+      font-size: 2rem;
+      font-weight: 600;
+      color: #E1306C;
+      margin-bottom: 20px;
+    }
+    input[type="url"] {
+      padding: 10px;
+      width: 300px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      padding: 10px 20px;
+      background-color: #E1306C;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .loading {
+      display: none;
+      margin-top: 20px;
+      font-size: 18px;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="logo">INSPIRO Reels</div>
+
+  <input type="url" id="videoUrl" placeholder="Paste Instagram Reel URL here...">
+  <button id="downloadBtn">Download</button>
+
+  <div class="loading" id="loadingText">⏳ Redirecting, please wait...</div>
+
+  <script>
+    document.getElementById('downloadBtn').addEventListener('click', () => {
+      const url = document.getElementById('videoUrl').value.trim();
+      if (!url) {
+        alert('Please paste a valid Instagram Reel link!');
+        return;
+      }
+
+      // Show loading text
+      document.getElementById('loadingText').style.display = 'block';
+
+      // Wait 2 seconds then redirect
+      setTimeout(() => {
+        const redirectUrl = `https://igram.world/?url=${encodeURIComponent(url)}`;
+        window.location.href = redirectUrl;
+      }, 2000);
+    });
+  </script>
+
+</body>
+</html>
